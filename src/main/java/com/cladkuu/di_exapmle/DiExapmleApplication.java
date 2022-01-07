@@ -1,6 +1,7 @@
 package com.cladkuu.di_exapmle;
 
 import com.cladkuu.di_exapmle.Controllers.*;
+import com.cladkuu.di_exapmle.Service.PropertyGreetingServiceImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -28,6 +29,10 @@ public class DiExapmleApplication {
         System.out.println("--- Property ---");
         PropertyInjectedController propertyInjectedController = (PropertyInjectedController) ctx.getBean("propertyInjectedController");
         System.out.println(propertyInjectedController.say());
+
+        System.out.println("--- SSSS ---");
+        PropertyGreetingServiceImpl propertyGreetingService = (PropertyGreetingServiceImpl) ctx.getBean("SSSS");
+        System.out.println(propertyGreetingService.SayHello());
 
         System.out.println("--- Setter ---");
         SetterInjectedController setterInjectedController = (SetterInjectedController) ctx.getBean("setterInjectedController");
