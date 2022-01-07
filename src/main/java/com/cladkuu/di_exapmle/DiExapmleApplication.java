@@ -2,6 +2,8 @@ package com.cladkuu.di_exapmle;
 
 import com.cladkuu.di_exapmle.Controllers.*;
 import com.cladkuu.di_exapmle.Service.PropertyGreetingServiceImpl;
+import com.cladkuu.di_exapmle.Service.PrototypeBean;
+import com.cladkuu.di_exapmle.Service.SingletoneBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -47,6 +49,20 @@ public class DiExapmleApplication {
         System.out.println("--- Component Scan ---");
         DogPetService dogPetService = (DogPetService) ctx.getBean("dogPetService");
         System.out.println(dogPetService.getPetType());
+
+
+        System.out.println("---- Bean Scopes ---------");
+        SingletoneBean singletonBean1 = ctx.getBean(SingletoneBean.class);
+        System.out.println(singletonBean1.getScope());
+        SingletoneBean singletonBean2 = ctx.getBean(SingletoneBean.class);
+        System.out.println(singletonBean2.getScope());
+
+        PrototypeBean prototypeBean1 = ctx.getBean(PrototypeBean.class);
+        System.out.println(prototypeBean1.getScope());
+        PrototypeBean prototypeBean2 = ctx.getBean(PrototypeBean.class);
+        System.out.println(prototypeBean2.getScope());
+
+
     }
 
 }
