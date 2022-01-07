@@ -1,5 +1,7 @@
 package com.cladkuu.di_exapmle.Config;
 
+import com.cladkuu.di_exapmle.Repository.EnglishGreetingRepositiry;
+import com.cladkuu.di_exapmle.Repository.EnglishGreetingRepositiryImpl;
 import com.cladkuu.di_exapmle.Service.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,10 +17,15 @@ public class GreetingConfig {
         return new I18NSpanishGreetingServiceImpl();
     }
 
+    @Bean
+    EnglishGreetingRepositiry englishGreetingRepositiryImpl(){
+        return new EnglishGreetingRepositiryImpl();
+    }
+
     @Profile({"default", "EN"})
     @Bean("i18nService")
-    I18NEnglishGreetingServiceImpl i18NEnglishGreetingService(){
-        return new I18NEnglishGreetingServiceImpl();
+    I18NEnglishGreetingServiceImpl i18NEnglishGreetingService(EnglishGreetingRepositiry englishGreetingRepositiryImpl){
+        return new I18NEnglishGreetingServiceImpl(englishGreetingRepositiryImpl);
     }
 
     @Bean
