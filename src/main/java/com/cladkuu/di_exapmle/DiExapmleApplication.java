@@ -4,6 +4,7 @@ import com.cladkuu.di_exapmle.Controllers.*;
 import com.cladkuu.di_exapmle.Service.PropertyGreetingServiceImpl;
 import com.cladkuu.di_exapmle.Service.PrototypeBean;
 import com.cladkuu.di_exapmle.Service.SingletoneBean;
+import com.cladkuu.di_exapmle.datasource.DBMock;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -61,6 +62,13 @@ public class DiExapmleApplication {
         System.out.println(prototypeBean1.getScope());
         PrototypeBean prototypeBean2 = ctx.getBean(PrototypeBean.class);
         System.out.println(prototypeBean2.getScope());
+
+        System.out.println("---- Fake data source ---------");
+        DBMock dbMock = ctx.getBean(DBMock.class);
+        System.out.println(dbMock.getUserName());
+        System.out.println(dbMock.getJdbcurl());
+        System.out.println(dbMock.getPassword());
+
 
 
     }

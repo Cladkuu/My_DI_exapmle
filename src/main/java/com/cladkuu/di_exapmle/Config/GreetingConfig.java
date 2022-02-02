@@ -3,16 +3,25 @@ package com.cladkuu.di_exapmle.Config;
 import com.cladkuu.di_exapmle.Repository.EnglishGreetingRepositiry;
 import com.cladkuu.di_exapmle.Repository.EnglishGreetingRepositiryImpl;
 import com.cladkuu.di_exapmle.Service.*;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
+import com.cladkuu.di_exapmle.datasource.DBMock;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.*;
 
+@PropertySource("classpath:datasource.properties")
 @Configuration
 public class GreetingConfig {
 
-    @Profile("ES")
     @Bean
+    DBMock dbMock(@Value("${guru.username}") String username,
+                  @Value("${guru.password}") String password,
+                  @Value("${guru.jdbcurl}") String jdbcurl){
+        return new DBMock(username, password, jdbcurl);
+
+
+    }
+
+    @Profile("ES")
+    @Bean("i18nService")
     I18NSpanishGreetingServiceImpl i18NSpanishGreetingService(){
         return new I18NSpanishGreetingServiceImpl();
     }
