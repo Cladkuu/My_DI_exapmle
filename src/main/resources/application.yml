@@ -1,0 +1,8 @@
+
+guru:
+  username: devusername
+  password: devpassword
+  jdbcurl: devurl
+spring:
+  profiles:
+    active: dog, EN, dev
