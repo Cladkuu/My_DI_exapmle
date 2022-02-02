@@ -20,7 +20,7 @@ public class Controller {
         return greetingService.SayHello();
     }
 
-    @GetMapping("/")
+
     public String sayName(){
         return dbMock.getPassword();
     }
