@@ -1,0 +1,15 @@
+spring:
+  profiles:
+    active: dog, EN, dev
+guru:
+  username: username
+  password: test
+  jdbcurl: testurl
+
+---
+spring:
+  profiles: prod
+guru:
+  username: produsername
+  password: prodtest
+  jdbcurl: produrl
