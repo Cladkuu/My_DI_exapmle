@@ -1,5 +1,6 @@
 package com.cladkuu.di_exapmle;
 
+import com.cladkuu.di_exapmle.Config.ConstructorBinding;
 import com.cladkuu.di_exapmle.Config.FakeDBConfig;
 import com.cladkuu.di_exapmle.Controllers.*;
 import com.cladkuu.di_exapmle.Service.PropertyGreetingServiceImpl;
@@ -77,6 +78,12 @@ public class DiExapmleApplication {
         System.out.println(fakeDBConfig.getPassword());
         System.out.println(fakeDBConfig.getSecname());
 
+
+        System.out.println("---- Constructor Binding ---------");
+        ConstructorBinding constructorBinding = ctx.getBean(ConstructorBinding.class);
+        System.out.println(constructorBinding.getUserName());
+        System.out.println(constructorBinding.getJdbcurl());
+        System.out.println(constructorBinding.getPassword());
 
 
     }

@@ -5,17 +5,18 @@ import com.cladkuu.di_exapmle.Repository.EnglishGreetingRepositiryImpl;
 import com.cladkuu.di_exapmle.Service.*;
 import com.cladkuu.di_exapmle.datasource.DBMock;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
 
-
+@EnableConfigurationProperties(ConstructorBinding.class)
 @Configuration
 public class GreetingConfig {
 
     @Bean
-    DBMock dbMock(FakeDBConfig fakeDBConfig){
-        return new DBMock(fakeDBConfig.getUserName(),
-                fakeDBConfig.getPassword(),
-                fakeDBConfig.getJdbcurl());
+    DBMock dbMock(ConstructorBinding constructorBinding){
+        return new DBMock(constructorBinding.getUserName(),
+                constructorBinding.getPassword(),
+                constructorBinding.getJdbcurl());
     }
 
     @Profile("ES")
