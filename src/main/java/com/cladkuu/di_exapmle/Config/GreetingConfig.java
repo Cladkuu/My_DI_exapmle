@@ -12,12 +12,10 @@ import org.springframework.context.annotation.*;
 public class GreetingConfig {
 
     @Bean
-    DBMock dbMock(@Value("${guru.username}") String username,
-                  @Value("${guru.password}") String password,
-                  @Value("${guru.jdbcurl}") String jdbcurl){
-        return new DBMock(username, password, jdbcurl);
-
-
+    DBMock dbMock(FakeDBConfig fakeDBConfig){
+        return new DBMock(fakeDBConfig.getUserName(),
+                fakeDBConfig.getPassword(),
+                fakeDBConfig.getJdbcurl());
     }
 
     @Profile("ES")

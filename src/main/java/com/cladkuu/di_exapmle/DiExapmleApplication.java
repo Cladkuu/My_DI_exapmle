@@ -1,5 +1,6 @@
 package com.cladkuu.di_exapmle;
 
+import com.cladkuu.di_exapmle.Config.FakeDBConfig;
 import com.cladkuu.di_exapmle.Controllers.*;
 import com.cladkuu.di_exapmle.Service.PropertyGreetingServiceImpl;
 import com.cladkuu.di_exapmle.Service.PrototypeBean;
@@ -68,6 +69,13 @@ public class DiExapmleApplication {
         System.out.println(dbMock.getUserName());
         System.out.println(dbMock.getJdbcurl());
         System.out.println(dbMock.getPassword());
+
+        System.out.println("---- Fake DB config ---------");
+        FakeDBConfig fakeDBConfig = ctx.getBean(FakeDBConfig.class);
+        System.out.println(fakeDBConfig.getUserName());
+        System.out.println(fakeDBConfig.getJdbcurl());
+        System.out.println(fakeDBConfig.getPassword());
+        System.out.println(fakeDBConfig.getSecname());
 
 
 
