@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: dog, EN, dev
+    active: dog, EN, prod
 guru:
   username: username
   password: test
@@ -13,3 +13,4 @@ guru:
   username: produsername
   password: prodtest
   jdbcurl: produrl
+secondname: rrr
